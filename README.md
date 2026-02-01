@@ -257,3 +257,30 @@ $$
 \gamma = 0.99
 $$
 
+### Example Execution Output
+
+The following output is produced when running the experiment:
+
+```text
+Policy Iteration finished.
+Iterations: 3
+First 10 states policy (n -> price):
+ state_n  action_price
+       0           4.0
+       1           4.0
+       2           4.0
+       3           5.0
+       4           5.0
+       5           5.0
+       6           5.0
+       7           5.0
+       8           5.0
+       9           5.0
+
+Unique prices used: [4.0, 5.0, 6.0]
+
+Saved files:
+ - week_01/results/policy_table.csv
+ - week_01/results/value_function.csv
+ - week_01/results/policy_iteration_history.csv
+
