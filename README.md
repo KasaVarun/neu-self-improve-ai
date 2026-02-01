@@ -203,7 +203,8 @@ This equation is solved iteratively until convergence.
 The policy is updated greedily using the current value function:
 
 $$
-\pi_{\text{new}}(s)$$
+\pi_{\text{new}}(s)
+$$
 =
 \arg\max_{a \in \mathcal{A}}
 \left[
