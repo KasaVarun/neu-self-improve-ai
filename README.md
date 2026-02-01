@@ -1,3 +1,5 @@
+# Week 01 — Queue Pricing via Policy Iteration (Low68)
+
 ## 1. Problem Description and Motivation
 
 We consider a pricing and congestion control problem in a service system such as a call center, cloud computing service, or shared processing facility. Customers arrive over time requesting service. If the server is busy, arriving customers wait in a queue until service becomes available.
@@ -45,7 +47,9 @@ The objectives of this assignment are to:
 3. Analyze the structure and behavior of the learned policy.
 4. Demonstrate how congestion-aware pricing emerges from optimal control.
 
-This formulation and solution approach directly correspond to the **Low68 queueing example** 
+This formulation and solution approach directly correspond to the **Low68 queue pricing example**, where arrival rates are controlled via pricing decisions and optimal policies exhibit congestion-dependent threshold behavior.
+
+---
 
 ## 2. Markov Decision Process (MDP) Formulation
 
@@ -170,7 +174,7 @@ R\bigl(s_t,\pi(s_t)\bigr)
 \right]
 $$
 
-where \( \gamma \in (0,1) \) is the discount factor.
+All parameters used in this formulation (\(N, \lambda_0, \beta, \mu, c_w, \Delta t, \gamma\)) are instantiated explicitly in the implementation.
 
 ---
 
@@ -203,8 +207,7 @@ This equation is solved iteratively until convergence.
 The policy is updated greedily using the current value function:
 
 $$
-\pi_{\text{new}}(s)
-$$
+\pi_{new}(s)
 =
 \arg\max_{a \in \mathcal{A}}
 \left[
@@ -212,8 +215,7 @@ R(s,a)
 +
 \gamma
 \sum_{s' \in \mathcal{S}}
-P(s' \mid s,a)
-V^\pi(s')
+P(s' \mid s,a)\, V^\pi(s')
 \right]
 $$
 
@@ -258,9 +260,11 @@ $$
 \gamma = 0.99
 $$
 
-### Example Execution Output
+---
 
-The following output is produced when running the experiment:
+## 5. Example Execution Output (Notebook-Style)
+
+The following output is produced when running the experiment (`run_experiment.py`):
 
 ```text
 Policy Iteration finished.
@@ -270,6 +274,7 @@ First 10 states policy (n -> price):
        0           4.0
        1           4.0
        2           4.0
+       3 
        3           5.0
        4           5.0
        5           5.0
@@ -284,4 +289,3 @@ Saved files:
  - week_01/results/policy_table.csv
  - week_01/results/value_function.csv
  - week_01/results/policy_iteration_history.csv
-
